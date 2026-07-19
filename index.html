@@ -8,22 +8,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#16222B;
-    --ink-soft:#243543;
-    --paper:#F3ECD9;
-    --paper-soft:#EAE1CB;
-    --teal:#3E7C74;
-    --teal-bright:#5BA79A;
-    --ochre:#C99A4B;
-    --muted:#93A5AF;
-    --line: rgba(243,236,217,0.16);
+    --ink:#0F172A;
+    --ink-soft:#334155;
+    --paper:#F8FAFC;
+    --paper-soft:#FFFFFF;
+    --teal:#0EA5E9;
+    --teal-bright:#38BDF8;
+    --ochre:#0EA5E9;
+    --muted:#64748B;
+    --line: #E2E8F0;
+    --tag-bg: rgba(14,165,233,0.1);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     font-family:'IBM Plex Sans', sans-serif;
-    background:var(--ink);
-    color:var(--paper);
+    background:var(--paper);
+    color:var(--ink);
     -webkit-font-smoothing:antialiased;
   }
   .display{font-family:'Fraunces', serif;}
@@ -32,52 +33,52 @@
 
   /* ---------- layout bands ---------- */
   .band{padding:5.5rem 1.5rem;}
-  .band-ink{background:var(--ink); color:var(--paper);}
+  .band-ink{background:var(--paper-soft); color:var(--ink);}
   .band-paper{background:var(--paper); color:var(--ink);}
   .wrap{max-width:920px; margin:0 auto;}
 
   /* wave divider */
   .wave{display:block; width:100%; height:36px;}
   .wave-ink-to-paper path{fill:var(--paper);}
-  .wave-paper-to-ink path{fill:var(--ink);}
+  .wave-paper-to-ink path{fill:var(--paper-soft);}
 
   /* ---------- nav ---------- */
   header{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    background:rgba(22,34,43,0.92);
+    background:rgba(248,250,252,0.92);
     border-bottom:1px solid var(--line);
     backdrop-filter:blur(6px);
   }
   nav{max-width:920px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:0.9rem 1.5rem;}
-  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; letter-spacing:0.01em; color:var(--paper);}
-  .brand span{color:var(--ochre);}
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; letter-spacing:0.01em; color:var(--ink);}
+  .brand span{color:var(--teal);}
   .navlinks{display:none; gap:2rem; font-size:0.85rem; letter-spacing:0.03em; text-transform:uppercase;}
-  .navlinks a{opacity:0.75; transition:opacity .2s, color .2s; text-decoration:none;}
-  .navlinks a:hover{opacity:1; color:var(--teal-bright);}
+  .navlinks a{opacity:0.75; transition:opacity .2s, color .2s; text-decoration:none; color:var(--ink-soft);}
+  .navlinks a:hover{opacity:1; color:var(--teal);}
   @media(min-width:768px){.navlinks{display:flex;}}
 
   /* ---------- hero ---------- */
   .hero{padding-top:9.5rem;}
   .eyebrow{
     font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--ochre); margin-bottom:1.2rem; display:block;
+    text-transform:uppercase; color:var(--teal); margin-bottom:1.2rem; display:block;
   }
   h1.hero-title{
     font-size:clamp(2.2rem, 5vw, 3.6rem);
-    font-weight:600; line-height:1.08; margin:0 0 1.3rem 0; letter-spacing:-0.01em;
+    font-weight:600; line-height:1.08; margin:0 0 1.3rem 0; letter-spacing:-0.01em; color:var(--ink);
   }
-  h1.hero-title em{font-style:italic; color:var(--teal-bright); font-weight:500;}
+  h1.hero-title em{font-style:italic; color:var(--teal); font-weight:500;}
   .hero-sub{font-size:1.08rem; line-height:1.7; color:var(--muted); max-width:640px; margin-bottom:2.5rem;}
   .btnrow{display:flex; flex-wrap:wrap; gap:0.9rem; margin-bottom:3.5rem;}
   .btn{
     display:inline-flex; align-items:center; gap:0.5rem;
-    padding:0.75rem 1.4rem; border-radius:2px; font-size:0.88rem; font-weight:500;
+    padding:0.75rem 1.4rem; border-radius:6px; font-size:0.88rem; font-weight:500;
     text-decoration:none; transition:all .2s ease;
   }
-  .btn-solid{background:var(--teal); color:var(--paper);}
-  .btn-solid:hover{background:var(--teal-bright);}
-  .btn-line{border:1px solid var(--line); color:var(--paper);}
-  .btn-line:hover{border-color:var(--ochre); color:var(--ochre);}
+  .btn-solid{background:var(--teal); color:#FFFFFF;}
+  .btn-solid:hover{background:#0284C7;}
+  .btn-line{border:1px solid var(--line); color:var(--ink);}
+  .btn-line:hover{border-color:var(--teal); color:var(--teal);}
 
   /* field ledger stat strip */
   .ledger{
@@ -87,7 +88,7 @@
   @media(min-width:640px){.ledger{grid-template-columns:repeat(4,1fr);}}
   .ledger-cell{padding:1.3rem 1rem; border-right:1px solid var(--line);}
   .ledger-cell:last-child{border-right:none;}
-  .ledger-num{font-family:'JetBrains Mono',monospace; font-size:1.5rem; color:var(--ochre); display:block;}
+  .ledger-num{font-family:'JetBrains Mono',monospace; font-size:1.5rem; color:var(--teal); display:block;}
   .ledger-label{font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-top:0.3rem; display:block;}
 
   /* ---------- section heads ---------- */
@@ -95,7 +96,7 @@
   .section-num{font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--teal); letter-spacing:0.08em;}
   .band-paper .section-num{color:var(--teal);}
   h2.section-title{
-    font-family:'Fraunces',serif; font-weight:600; font-size:2rem; margin:0.35rem 0 0 0; letter-spacing:-0.01em;
+    font-family:'Fraunces',serif; font-weight:600; font-size:2rem; margin:0.35rem 0 0 0; letter-spacing:-0.01em; color:var(--ink);
   }
 
   /* ---------- about ---------- */
@@ -103,55 +104,56 @@
   @media(min-width:768px){.about-grid{grid-template-columns:1.3fr 1fr;}}
   .about-text p{line-height:1.75; font-size:1.02rem; margin:0 0 1.1rem 0; color:var(--ink-soft);}
   .thesis-card{
-    background:var(--ink); color:var(--paper); border-radius:3px; padding:1.6rem;
-    border-left:3px solid var(--ochre);
+    background:#FFFFFF; color:var(--ink); border-radius:8px; padding:1.6rem;
+    border:1px solid var(--line); border-left:3px solid var(--teal);
+    box-shadow:0 1px 3px rgba(15,23,42,0.06);
   }
-  .thesis-card .k{font-family:'JetBrains Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ochre); display:block; margin-bottom:0.5rem;}
-  .thesis-card p{font-size:0.95rem; line-height:1.6; margin:0 0 1.1rem 0; color:var(--paper);}
+  .thesis-card .k{font-family:'JetBrains Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); display:block; margin-bottom:0.5rem;}
+  .thesis-card p{font-size:0.95rem; line-height:1.6; margin:0 0 1.1rem 0; color:var(--ink-soft);}
   .thesis-card p:last-child{margin-bottom:0;}
   .degree-row{display:flex; justify-content:space-between; align-items:baseline; margin-top:0.9rem; padding-top:0.9rem; border-top:1px solid var(--line);}
   .degree-row:first-of-type{border-top:none; margin-top:0; padding-top:0;}
 
   /* ---------- research / publications ---------- */
   .pub-card{
-    border:1px solid var(--line); border-radius:3px; padding:1.5rem 1.7rem; margin-bottom:1rem;
-    transition:border-color .2s;
+    background:#FFFFFF; border:1px solid var(--line); border-radius:8px; padding:1.5rem 1.7rem; margin-bottom:1rem;
+    transition:border-color .2s, box-shadow .2s;
   }
-  .pub-card:hover{border-color:var(--teal-bright);}
+  .pub-card:hover{border-color:var(--teal-bright); box-shadow:0 4px 12px rgba(14,165,233,0.1);}
   .pub-tag{
     font-family:'JetBrains Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em;
-    color:var(--ochre); display:inline-block; margin-bottom:0.6rem;
+    color:var(--teal); display:inline-block; margin-bottom:0.6rem;
   }
-  .pub-title{font-size:1.02rem; font-weight:500; line-height:1.5; margin:0 0 0.4rem 0;}
+  .pub-title{font-size:1.02rem; font-weight:500; line-height:1.5; margin:0 0 0.4rem 0; color:var(--ink);}
   .pub-meta{font-size:0.87rem; color:var(--muted); line-height:1.55;}
   .interest-pills{display:flex; flex-wrap:wrap; gap:0.55rem; margin-top:1.8rem;}
   .pill{
     font-family:'JetBrains Mono',monospace; font-size:0.75rem; padding:0.4rem 0.85rem;
-    border:1px solid var(--teal); color:var(--teal-bright); border-radius:20px;
+    background:var(--tag-bg); border:1px solid rgba(14,165,233,0.25); color:#0369A1; border-radius:20px;
   }
 
   /* ---------- fieldwork timeline ---------- */
-  .timeline{position:relative; border-left:1px solid var(--ink-soft); margin-left:0.4rem; padding-left:1.8rem;}
+  .timeline{position:relative; border-left:1px solid var(--line); margin-left:0.4rem; padding-left:1.8rem;}
   .tl-item{position:relative; margin-bottom:2.4rem;}
   .tl-item:last-child{margin-bottom:0;}
   .tl-dot{position:absolute; left:-2.02rem; top:0.3rem; width:10px; height:10px; border-radius:50%; background:var(--teal); border:2px solid var(--paper);}
-  .tl-role{font-size:1.12rem; font-weight:600; margin:0;}
+  .tl-role{font-size:1.12rem; font-weight:600; margin:0; color:var(--ink);}
   .tl-org{color:var(--teal); font-weight:500;}
-  .tl-date{font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--ink-soft); opacity:0.65; display:block; margin:0.15rem 0 0.7rem 0;}
+  .tl-date{font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--muted); display:block; margin:0.15rem 0 0.7rem 0;}
   .tl-item ul{margin:0; padding-left:1.1rem;}
   .tl-item li{margin-bottom:0.4rem; line-height:1.6; color:var(--ink-soft); font-size:0.95rem;}
 
   /* ---------- skills ---------- */
   .skill-grid{display:grid; gap:1.6rem; grid-template-columns:1fr;}
   @media(min-width:640px){.skill-grid{grid-template-columns:1fr 1fr;}}
-  .skill-block{border:1px solid var(--line); border-radius:3px; padding:1.4rem 1.5rem;}
+  .skill-block{background:#FFFFFF; border:1px solid var(--line); border-radius:8px; padding:1.4rem 1.5rem;}
   .skill-block h3{
     font-family:'JetBrains Mono',monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.07em;
-    color:var(--ochre); margin:0 0 0.9rem 0;
+    color:var(--teal); margin:0 0 0.9rem 0;
   }
   .skill-block ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:0.5rem;}
   .skill-block li{
-    font-size:0.85rem; padding:0.35rem 0.7rem; background:var(--ink-soft); border-radius:2px; color:var(--paper);
+    font-size:0.85rem; padding:0.35rem 0.7rem; background:var(--tag-bg); border-radius:6px; color:#0369A1;
   }
 
   /* ---------- leadership ---------- */
@@ -162,7 +164,7 @@
   /* ---------- contact ---------- */
   .contact-grid{display:grid; gap:1rem; margin-top:2rem;}
   @media(min-width:640px){.contact-grid{grid-template-columns:1fr 1fr;}}
-  .contact-card{border:1px solid var(--line); border-radius:3px; padding:1.3rem 1.5rem; display:flex; flex-direction:column; gap:0.2rem;}
+  .contact-card{background:#FFFFFF; border:1px solid var(--line); border-radius:8px; padding:1.3rem 1.5rem; display:flex; flex-direction:column; gap:0.2rem;}
   .contact-card .k{font-family:'JetBrains Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--muted);}
   .contact-card .v{font-size:1rem; text-decoration:none; color:var(--ink);}
   .contact-card .v:hover{color:var(--teal);}
@@ -171,7 +173,7 @@
   .ref-item .name{font-weight:600;}
   .ref-item .role{color:var(--ink-soft); opacity:0.8; display:block; font-size:0.86rem;}
 
-  footer{padding:2.2rem 1.5rem; text-align:center; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--muted); background:var(--ink); border-top:1px solid var(--line);}
+  footer{padding:2.2rem 1.5rem; text-align:center; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--muted); background:var(--paper-soft); border-top:1px solid var(--line);}
 </style>
 </head>
 <body>
@@ -196,7 +198,7 @@
   <section class="band band-ink hero">
     <div class="wrap">
       <span class="eyebrow">Khulna, Bangladesh — Energy &amp; Development Economics</span>
-      <h1 class="hero-title">Md. Moniruzzaman Monir<br><em>studies who gets left in the dark, and why.</em></h1>
+      <h1 class="hero-title">Md. Moniruzzaman Monir</h1>
       <p class="hero-sub">MSS candidate in Economics at Khulna University researching the climate vulnerability–energy poverty nexus among coastal households in southwestern Bangladesh — grounded in over 700 household surveys collected directly in the field.</p>
       <div class="btnrow">
         <a href="#research" class="btn btn-solid">View my research</a>
@@ -388,7 +390,7 @@
         </div>
         <div class="contact-card">
           <span class="k">Location</span>
-          <span class="v"> Khulna, Bangladesh</span>
+          <span class="v">Gollamari, Khulna, Bangladesh</span>
         </div>
       </div>
 
@@ -403,3 +405,4 @@
 
 </body>
 </html>
+
