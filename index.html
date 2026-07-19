@@ -1,160 +1,405 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <title>Md. Moniruzzaman Monir | Economics Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Moniruzzaman Monir | Energy & Development Economist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16222B;
+    --ink-soft:#243543;
+    --paper:#F3ECD9;
+    --paper-soft:#EAE1CB;
+    --teal:#3E7C74;
+    --teal-bright:#5BA79A;
+    --ochre:#C99A4B;
+    --muted:#93A5AF;
+    --line: rgba(243,236,217,0.16);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'IBM Plex Sans', sans-serif;
+    background:var(--ink);
+    color:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Fraunces', serif;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit;}
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 40px;
-      background-color: #f9f9f9;
-      color: #222;
-    }
+  /* ---------- layout bands ---------- */
+  .band{padding:5.5rem 1.5rem;}
+  .band-ink{background:var(--ink); color:var(--paper);}
+  .band-paper{background:var(--paper); color:var(--ink);}
+  .wrap{max-width:920px; margin:0 auto;}
 
-    h1, h2 {
-      color: #0b3d91;
-    }
+  /* wave divider */
+  .wave{display:block; width:100%; height:36px;}
+  .wave-ink-to-paper path{fill:var(--paper);}
+  .wave-paper-to-ink path{fill:var(--ink);}
 
-    h1 {
-      border-bottom: 2px solid #0b3d91;
-      padding-bottom: 5px;
-    }
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(22,34,43,0.92);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(6px);
+  }
+  nav{max-width:920px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:0.9rem 1.5rem;}
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; letter-spacing:0.01em; color:var(--paper);}
+  .brand span{color:var(--ochre);}
+  .navlinks{display:none; gap:2rem; font-size:0.85rem; letter-spacing:0.03em; text-transform:uppercase;}
+  .navlinks a{opacity:0.75; transition:opacity .2s, color .2s; text-decoration:none;}
+  .navlinks a:hover{opacity:1; color:var(--teal-bright);}
+  @media(min-width:768px){.navlinks{display:flex;}}
 
-    section {
-      margin-bottom: 30px;
-    }
+  /* ---------- hero ---------- */
+  .hero{padding-top:9.5rem;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--ochre); margin-bottom:1.2rem; display:block;
+  }
+  h1.hero-title{
+    font-size:clamp(2.2rem, 5vw, 3.6rem);
+    font-weight:600; line-height:1.08; margin:0 0 1.3rem 0; letter-spacing:-0.01em;
+  }
+  h1.hero-title em{font-style:italic; color:var(--teal-bright); font-weight:500;}
+  .hero-sub{font-size:1.08rem; line-height:1.7; color:var(--muted); max-width:640px; margin-bottom:2.5rem;}
+  .btnrow{display:flex; flex-wrap:wrap; gap:0.9rem; margin-bottom:3.5rem;}
+  .btn{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    padding:0.75rem 1.4rem; border-radius:2px; font-size:0.88rem; font-weight:500;
+    text-decoration:none; transition:all .2s ease;
+  }
+  .btn-solid{background:var(--teal); color:var(--paper);}
+  .btn-solid:hover{background:var(--teal-bright);}
+  .btn-line{border:1px solid var(--line); color:var(--paper);}
+  .btn-line:hover{border-color:var(--ochre); color:var(--ochre);}
 
-    ul {
-      padding-left: 20px;
-    }
+  /* field ledger stat strip */
+  .ledger{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    display:grid; grid-template-columns:repeat(2,1fr); gap:0;
+  }
+  @media(min-width:640px){.ledger{grid-template-columns:repeat(4,1fr);}}
+  .ledger-cell{padding:1.3rem 1rem; border-right:1px solid var(--line);}
+  .ledger-cell:last-child{border-right:none;}
+  .ledger-num{font-family:'JetBrains Mono',monospace; font-size:1.5rem; color:var(--ochre); display:block;}
+  .ledger-label{font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-top:0.3rem; display:block;}
 
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
+  /* ---------- section heads ---------- */
+  .section-head{margin-bottom:2.6rem;}
+  .section-num{font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--teal); letter-spacing:0.08em;}
+  .band-paper .section-num{color:var(--teal);}
+  h2.section-title{
+    font-family:'Fraunces',serif; font-weight:600; font-size:2rem; margin:0.35rem 0 0 0; letter-spacing:-0.01em;
+  }
 
-    .title {
-      font-weight: bold;
-    }
+  /* ---------- about ---------- */
+  .about-grid{display:grid; gap:2.2rem;}
+  @media(min-width:768px){.about-grid{grid-template-columns:1.3fr 1fr;}}
+  .about-text p{line-height:1.75; font-size:1.02rem; margin:0 0 1.1rem 0; color:var(--ink-soft);}
+  .thesis-card{
+    background:var(--ink); color:var(--paper); border-radius:3px; padding:1.6rem;
+    border-left:3px solid var(--ochre);
+  }
+  .thesis-card .k{font-family:'JetBrains Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ochre); display:block; margin-bottom:0.5rem;}
+  .thesis-card p{font-size:0.95rem; line-height:1.6; margin:0 0 1.1rem 0; color:var(--paper);}
+  .thesis-card p:last-child{margin-bottom:0;}
+  .degree-row{display:flex; justify-content:space-between; align-items:baseline; margin-top:0.9rem; padding-top:0.9rem; border-top:1px solid var(--line);}
+  .degree-row:first-of-type{border-top:none; margin-top:0; padding-top:0;}
 
-    .subtitle {
-      font-style: italic;
-      color: #555;
-    }
+  /* ---------- research / publications ---------- */
+  .pub-card{
+    border:1px solid var(--line); border-radius:3px; padding:1.5rem 1.7rem; margin-bottom:1rem;
+    transition:border-color .2s;
+  }
+  .pub-card:hover{border-color:var(--teal-bright);}
+  .pub-tag{
+    font-family:'JetBrains Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--ochre); display:inline-block; margin-bottom:0.6rem;
+  }
+  .pub-title{font-size:1.02rem; font-weight:500; line-height:1.5; margin:0 0 0.4rem 0;}
+  .pub-meta{font-size:0.87rem; color:var(--muted); line-height:1.55;}
+  .interest-pills{display:flex; flex-wrap:wrap; gap:0.55rem; margin-top:1.8rem;}
+  .pill{
+    font-family:'JetBrains Mono',monospace; font-size:0.75rem; padding:0.4rem 0.85rem;
+    border:1px solid var(--teal); color:var(--teal-bright); border-radius:20px;
+  }
 
-    a {
-      color: #0b3d91;
-      text-decoration: none;
-    }
+  /* ---------- fieldwork timeline ---------- */
+  .timeline{position:relative; border-left:1px solid var(--ink-soft); margin-left:0.4rem; padding-left:1.8rem;}
+  .tl-item{position:relative; margin-bottom:2.4rem;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-dot{position:absolute; left:-2.02rem; top:0.3rem; width:10px; height:10px; border-radius:50%; background:var(--teal); border:2px solid var(--paper);}
+  .tl-role{font-size:1.12rem; font-weight:600; margin:0;}
+  .tl-org{color:var(--teal); font-weight:500;}
+  .tl-date{font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--ink-soft); opacity:0.65; display:block; margin:0.15rem 0 0.7rem 0;}
+  .tl-item ul{margin:0; padding-left:1.1rem;}
+  .tl-item li{margin-bottom:0.4rem; line-height:1.6; color:var(--ink-soft); font-size:0.95rem;}
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  /* ---------- skills ---------- */
+  .skill-grid{display:grid; gap:1.6rem; grid-template-columns:1fr;}
+  @media(min-width:640px){.skill-grid{grid-template-columns:1fr 1fr;}}
+  .skill-block{border:1px solid var(--line); border-radius:3px; padding:1.4rem 1.5rem;}
+  .skill-block h3{
+    font-family:'JetBrains Mono',monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.07em;
+    color:var(--ochre); margin:0 0 0.9rem 0;
+  }
+  .skill-block ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:0.5rem;}
+  .skill-block li{
+    font-size:0.85rem; padding:0.35rem 0.7rem; background:var(--ink-soft); border-radius:2px; color:var(--paper);
+  }
+
+  /* ---------- leadership ---------- */
+  .lead-row{display:flex; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line);}
+  .lead-row:last-child{border-bottom:none;}
+  .lead-year{font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--teal); width:80px; flex-shrink:0;}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid; gap:1rem; margin-top:2rem;}
+  @media(min-width:640px){.contact-grid{grid-template-columns:1fr 1fr;}}
+  .contact-card{border:1px solid var(--line); border-radius:3px; padding:1.3rem 1.5rem; display:flex; flex-direction:column; gap:0.2rem;}
+  .contact-card .k{font-family:'JetBrains Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--muted);}
+  .contact-card .v{font-size:1rem; text-decoration:none; color:var(--ink);}
+  .contact-card .v:hover{color:var(--teal);}
+  .refs{margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line);}
+  .ref-item{margin-bottom:1rem; font-size:0.92rem; line-height:1.55;}
+  .ref-item .name{font-weight:600;}
+  .ref-item .role{color:var(--ink-soft); opacity:0.8; display:block; font-size:0.86rem;}
+
+  footer{padding:2.2rem 1.5rem; text-align:center; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--muted); background:var(--ink); border-top:1px solid var(--line);}
+</style>
 </head>
-
 <body>
 
-<div class="container">
+<header>
+  <nav>
+    <div class="brand">MM<span>.</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#fieldwork">Fieldwork</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="btn btn-line" style="padding:0.5rem 1.1rem; font-size:0.8rem;">Get in touch</a>
+  </nav>
+</header>
 
-  <h1>Md. Moniruzzaman Monir</h1>
-  <p><strong>Economics Graduate | Climate & Development Researcher</strong></p>
-  <p>Email: mmmonirbd25@gmail.com</p>
-  <p>Location: Khulna, Bangladesh</p>
+<main>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I am a graduate student in Economics at Khulna University with research interests in climate economics,
-      energy poverty, development economics, and applied econometrics. My work focuses on data-driven analysis
-      of real-world economic challenges in Bangladesh, particularly in vulnerable coastal regions.
-    </p>
+  <!-- HERO -->
+  <section class="band band-ink hero">
+    <div class="wrap">
+      <span class="eyebrow">Khulna, Bangladesh — Energy &amp; Development Economics</span>
+      <h1 class="hero-title">Md. Moniruzzaman Monir<br><em>studies who gets left in the dark, and why.</em></h1>
+      <p class="hero-sub">MSS candidate in Economics at Khulna University researching the climate vulnerability–energy poverty nexus among coastal households in southwestern Bangladesh — grounded in over 700 household surveys collected directly in the field.</p>
+      <div class="btnrow">
+        <a href="#research" class="btn btn-solid">View my research</a>
+        <a href="mailto:mmmonirbd25@gmail.com" class="btn btn-line">mmmonirbd25@gmail.com</a>
+      </div>
+    </div>
+    <div class="ledger wrap">
+      <div class="ledger-cell"><span class="ledger-num">700+</span><span class="ledger-label">Household surveys fielded</span></div>
+      <div class="ledger-cell"><span class="ledger-num">3.65</span><span class="ledger-label">MSS CGPA (expected 2026)</span></div>
+      <div class="ledger-cell"><span class="ledger-num">2</span><span class="ledger-label">Manuscripts in preparation</span></div>
+      <div class="ledger-cell"><span class="ledger-num">1</span><span class="ledger-label">Peer-reviewed publication</span></div>
+    </div>
   </section>
 
-  <section>
-    <h2>Education</h2>
-    <p class="title">Master of Social Science (MSS) in Economics</p>
-    <p class="subtitle">Khulna University | Expected 2026 | CGPA: 3.65/4.00</p>
-    <p>
-      Thesis: Climate Vulnerability and Energy Poverty Nexus among Southwestern Coastal Households in Bangladesh
-    </p>
+  <svg class="wave wave-ink-to-paper" viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0,18 C150,36 350,0 600,18 C850,36 1050,0 1200,18 L1200,36 L0,36 Z"></path></svg>
 
-    <p class="title">Bachelor of Social Science (BSS) in Economics</p>
-    <p class="subtitle">Khulna University | 2020 – 2024 | CGPA: 3.47/4.00</p>
-    <p>
-      Thesis: Impact of Modern Technology Adoption on Paddy Production: A Study in Gaibandha District
-    </p>
+  <!-- ABOUT -->
+  <section id="about" class="band band-paper">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">01 · About</span>
+        <h2 class="section-title">Fieldwork first, models second</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a Master's candidate in Economics at Khulna University, working at the intersection of energy poverty, climate vulnerability, and household welfare in Bangladesh's southwestern coastal belt — one of the regions most exposed to salinity intrusion, cyclones, and unreliable power access.</p>
+          <p>My path here started with a BSS thesis on technology adoption in paddy farming in Gaibandha, and has since taken me through three years of direct household-level fieldwork: salinity-free drinking water, water governance, multidimensional poverty, and organic food consumption, before settling on energy poverty as the throughline connecting climate risk to everyday household decisions.</p>
+          <p>I care about econometrics that stays honest to the survey data behind it — which is why I still enumerate my own surveys rather than working only from secondary datasets.</p>
+        </div>
+        <div class="thesis-card">
+          <span class="k">Current Thesis</span>
+          <p>"Climate Vulnerability and Energy Poverty Nexus among Southwestern Coastal Households in Bangladesh" — Khulna University, expected 2026.</p>
+          <div class="degree-row">
+            <div><strong style="font-size:0.92rem;">MSS, Economics</strong><br><span style="font-size:0.8rem; opacity:0.75;">Khulna University</span></div>
+            <div class="mono" style="font-size:0.85rem; color:var(--ochre);">2026</div>
+          </div>
+          <div class="degree-row">
+            <div><strong style="font-size:0.92rem;">BSS, Economics</strong><br><span style="font-size:0.8rem; opacity:0.75;">Khulna University · CGPA 3.47</span></div>
+            <div class="mono" style="font-size:0.85rem; color:var(--ochre);">2020–24</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Research Projects</h2>
-    <ul>
-      <li>
-        <strong>Climate Vulnerability and Energy Poverty Nexus among Southwestern Coastal Households in Bangladesh</strong><br>
-        <span class="subtitle">MSS Thesis</span>
-      </li>
-      <li>
-        <strong>Impact of Modern Technology Adoption on Paddy Production: A Study in Gaibandha District</strong><br>
-        <span class="subtitle">BSS Thesis</span>
-      </li>
-      <li>
-        <strong>Promoting Sustainable Consumption: Knowledge, Attitudes, and Practices among University Students in Bangladesh</strong><br>
-        <span class="subtitle">Conference Presentation (2025)</span>
-      </li>
-    </ul>
+  <svg class="wave wave-paper-to-ink" viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0,18 C150,0 350,36 600,18 C850,0 1050,36 1200,18 L1200,36 L0,36 Z"></path></svg>
+
+  <!-- RESEARCH -->
+  <section id="research" class="band band-ink">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num" style="color:var(--teal-bright);">02 · Research</span>
+        <h2 class="section-title">Publications &amp; working papers</h2>
+      </div>
+
+      <div class="pub-card">
+        <span class="pub-tag">Published · 2026</span>
+        <p class="pub-title">The Relationship between Maternal Education, Household Spending Patterns, and Playtime in Secondary School Students' Academic Achievement</p>
+        <p class="pub-meta">Dewan, K. P., Islam, M. T., &amp; Monir, M. M. · <em>Indonesian Journal of Social Research</em>, 8(1), 69–82 · <a href="https://doi.org/10.30997/ijsr.v8i1.733" style="color:var(--teal-bright);">doi.org/10.30997/ijsr.v8i1.733</a></p>
+      </div>
+
+      <div class="pub-card">
+        <span class="pub-tag">In preparation</span>
+        <p class="pub-title">Impact of Rainwater Harvesting Adoption on Household Well-being in Coastal Bangladesh</p>
+        <p class="pub-meta">Monir, M. M., et al.</p>
+      </div>
+
+      <div class="pub-card">
+        <span class="pub-tag">In preparation</span>
+        <p class="pub-title">Sustainable Consumption among University Students: Evidence from a Knowledge–Attitude–Practice Framework in Bangladesh</p>
+        <p class="pub-meta">Monir, M. M., Prottoy, T. A., Islam, M. T., et al.</p>
+      </div>
+
+      <div class="pub-card">
+        <span class="pub-tag">Conference · 2025</span>
+        <p class="pub-title">Promoting Sustainable Consumption: Knowledge, Attitudes, and Practices among University Students in Bangladesh</p>
+        <p class="pub-meta">Prottoy, T. A., Monir, M. M., Islam, M. T. · Oral presentation, National Conference on Transformative Research and Its Future Impacts, Research &amp; Innovation Centre, Khulna University</p>
+      </div>
+
+      <div class="interest-pills">
+        <span class="pill">Energy Economics</span>
+        <span class="pill">Household Energy Poverty</span>
+        <span class="pill">Renewable Energy Transition</span>
+        <span class="pill">Climate Change Economics</span>
+        <span class="pill">Applied Econometrics</span>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Publication</h2>
-    <p>
-      Dewan, K. P., Islam, M. T., Monir, M. M. (2025). 
-      The relationship between maternal education, household spending patterns, 
-      and playtime in secondary school students’ academic achievement.
-    </p>
+  <svg class="wave wave-ink-to-paper" viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0,18 C150,36 350,0 600,18 C850,36 1050,0 1200,18 L1200,36 L0,36 Z"></path></svg>
+
+  <!-- FIELDWORK -->
+  <section id="fieldwork" class="band band-paper">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">03 · Fieldwork &amp; Experience</span>
+        <h2 class="section-title">Where the data comes from</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <h3 class="tl-role">Field Enumerator</h3>
+          <span class="tl-date">2022 – 2024</span>
+          <ul>
+            <li>Collected, validated, and managed 700+ household surveys using KoboToolbox.</li>
+            <li>Conducted household survey research on water governance, saline-free drinking water, multidimensional poverty, and organic food consumption.</li>
+            <li>Performed data cleaning, quality assurance, dataset preparation, and assisted with research reports.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <h3 class="tl-role">International Affairs Secretary <span class="tl-org">— Khulna University Research Society</span></h3>
+          <span class="tl-date">2023 – 2024</span>
+          <ul>
+            <li>Coordinated international academic webinars and research exchange activities.</li>
+            <li>Supported initiatives promoting international research collaboration.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Research & Field Experience</h2>
-    <ul>
-      <li>Collected and validated 250+ household surveys using KoboToolbox</li>
-      <li>Worked on water governance, saline-free drinking water, and multidimensional poverty</li>
-      <li>Conducted research on organic food consumption behavior</li>
-      <li>Performed data cleaning, validation, and report preparation</li>
-    </ul>
+  <svg class="wave wave-paper-to-ink" viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0,18 C150,0 350,36 600,18 C850,0 1050,36 1200,18 L1200,36 L0,36 Z"></path></svg>
+
+  <!-- SKILLS -->
+  <section id="skills" class="band band-ink">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num" style="color:var(--teal-bright);">04 · Technical Skills</span>
+        <h2 class="section-title">Methods, software &amp; tools</h2>
+      </div>
+      <div class="skill-grid">
+        <div class="skill-block">
+          <h3>Research &amp; Econometric Methods</h3>
+          <ul>
+            <li>Survey Design</li><li>Descriptive &amp; Inferential Statistics</li><li>Multiple Linear Regression</li>
+            <li>Logistic Regression</li><li>Propensity Score Matching</li><li>Principal Component Analysis</li>
+            <li>Structural Equation Modeling</li><li>Factor Analysis</li><li>Reliability &amp; Validity Analysis</li><li>Impact Evaluation</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h3>Software &amp; Tools</h3>
+          <ul>
+            <li>Stata</li><li>R</li><li>SPSS</li><li>QGIS</li><li>KoboToolbox</li>
+            <li>EndNote</li><li>LaTeX</li><li>Canva</li><li>Microsoft Office</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h3>Leadership &amp; Volunteering</h3>
+          <ul>
+            <li>Aspire Leadership Program, Cohort 3 (2025)</li>
+            <li>CareerX Program, Bangladesh Youth Leadership Center (2024)</li>
+            <li>English–Bangla Transcription, Education Research Bangladesh (2025)</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h3>Languages</h3>
+          <ul>
+            <li>Bengali — Native</li>
+            <li>English — Professional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Technical Skills</h2>
-    <p>
-      <strong>Data Analysis:</strong> Stata, SPSS, R<br>
-      <strong>GIS:</strong> QGIS (Map Making)<br>
-      <strong>Tools:</strong> KoboToolbox, Microsoft Office<br>
-      <strong>Writing:</strong> LaTeX, EndNote
-    </p>
+  <svg class="wave wave-ink-to-paper" viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0,18 C150,36 350,0 600,18 C850,36 1050,0 1200,18 L1200,36 L0,36 Z"></path></svg>
+
+  <!-- CONTACT -->
+  <section id="contact" class="band band-paper">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">05 · Contact</span>
+        <h2 class="section-title">Let's talk research</h2>
+        <p style="color:var(--ink-soft); max-width:520px; margin-top:0.8rem; line-height:1.65;">Open to research assistantships, PhD opportunities, and collaboration on energy poverty or climate economics work.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span class="k">Email</span>
+          <a class="v" href="mailto:mmmonirbd25@gmail.com">mmmonirbd25@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <span class="k">Phone</span>
+          <a class="v" href="tel:+8801609591529">+880 1609591529</a>
+        </div>
+        <div class="contact-card">
+          <span class="k">LinkedIn</span>
+          <a class="v" href="https://linkedin.com/in/mdmonirecon" target="_blank" rel="noopener noreferrer">linkedin.com/in/mdmonirecon</a>
+        </div>
+        <div class="contact-card">
+          <span class="k">Location</span>
+          <span class="v"> Khulna, Bangladesh</span>
+        </div>
+      </div>
+
+    </div>
   </section>
 
-  <section>
-    <h2>Leadership & Activities</h2>
-    <ul>
-      <li>International Affairs Secretary, Khulna University Research Society</li>
-      <li>Aspire Leadership Program (2025)</li>
-      <li>CareerX Program, BYLC (2024)</li>
-      <li>Education Research Bangladesh – Transcription Work</li>
-    </ul>
-  </section>
+</main>
 
-  <section>
-    <h2>Languages</h2>
-    <p>Bengali (Native), English (Professional)</p>
-  </section>
-
-</div>
+<footer>
+  © 2026 Md. Moniruzzaman Monir — Built for GitHub Pages
+</footer>
 
 </body>
 </html>
